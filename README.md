@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Michael Aladejana Ministries
 
-## Getting Started
+Marketing site for Michael Aladejana Ministries — Next.js 16 (App Router) + Tailwind CSS v4 + TypeScript.
 
-First, run the development server:
+## Run
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `app/page.tsx` — the long-form home page: hero → 01 Discipleship → 02 Biblical Teaching → 03 Meet Michael → 04 The Gospel on the Road (Texas Tour) → 05 Books & Resources → 06 Pastoral Guidance & Coaching → Get in touch.
+- `app/connect/page.tsx` — contact page; prefills the inquiry topic from `?topic=`.
+- `app/privacy/page.tsx` — placeholder privacy notice (needs real copy before launch).
+- `components/` — one file per section, plus `site-header`, `site-footer`, `ui.tsx` (Button / SectionLabel / Monogram / Arrow).
+- `lib/site.ts` — all editable copy: nav, pillars, teachings, tour cities, coaching tracks, inquiry topics.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Design tokens
 
-## Learn More
+Defined in `app/globals.css` under `@theme`:
 
-To learn more about Next.js, take a look at the following resources:
+| Token | Value | Use |
+| --- | --- | --- |
+| `forest-900` | `#123a33` | Hero, tour, footer |
+| `cream-100` | `#f7f3ec` | Page background |
+| `sage-100` | `#edf2ea` | Alternating sections |
+| `rust-600` | `#a8552c` | Primary buttons, eyebrows |
+| `peach-200` | `#f3dfcb` | Italic display accents on dark |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Fonts: Playfair Display (display) + Work Sans (body).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Not wired yet
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The inquiry form composes a `mailto:` to `site.email` — swap in a real endpoint (Resend, Formspree, route handler) before launch.
+- Featured video and teaching rows link to the YouTube channel; replace with real video IDs.
+- Images are placeholders pulled from the `thecglobal` project.

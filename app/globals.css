@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand palette — deep evergreen, cream paper, rust accent */
+  --color-forest-950: #0c2922;
+  --color-forest-900: #123a33;
+  --color-forest-800: #1a4a40;
+  --color-forest-700: #27604f;
+  --color-sage-200: #e2eadf;
+  --color-sage-100: #edf2ea;
+  --color-cream-50: #faf7f0;
+  --color-cream-100: #f7f3ec;
+  --color-cream-200: #efe9dd;
+  --color-rust-600: #a8552c;
+  --color-rust-500: #b86a3c;
+  --color-peach-200: #f3dfcb;
+  --color-ink-900: #16211d;
+  --color-ink-600: #4b5b55;
+
+  --font-display: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-body: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream-100);
+  color: var(--color-ink-900);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-body text-[0.7rem] font-semibold uppercase tracking-[0.22em];
+  }
+  .shell {
+    @apply mx-auto w-full max-w-[1240px] px-6 md:px-10;
+  }
+  .display {
+    @apply font-display font-normal leading-[1.05] tracking-[-0.015em];
+  }
+  .rule {
+    @apply h-px w-full bg-current opacity-10;
+  }
 }
