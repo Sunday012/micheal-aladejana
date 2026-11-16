@@ -3,10 +3,18 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { nav, site } from "@/lib/site";
-import { Arrow, Monogram } from "./ui";
+import { Monogram } from "./ui";
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -16,11 +24,21 @@ export default function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink-900/10 bg-cream-100/95 backdrop-blur">
-      <div className="shell flex h-20 items-center justify-between gap-6">
+    <header
+      className={`sticky top-0 z-50 border-b bg-cream-100/95 backdrop-blur transition-[border-color,box-shadow,background-color] duration-500 ${
+        scrolled
+          ? "border-ink-900/10 shadow-[0_10px_30px_-24px_rgba(22,33,29,0.9)]"
+          : "border-transparent"
+      }`}
+    >
+      <div
+        className={`shell flex items-center justify-between gap-6 transition-[height] duration-500 ease-out ${
+          scrolled ? "h-16" : "h-20"
+        }`}
+      >
         <Link
           href="/"
-          className="flex items-center gap-3"
+          className="group/logo flex items-center gap-3"
           onClick={() => setOpen(false)}
         >
           <Monogram />
@@ -39,16 +57,16 @@ export default function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="font-body text-sm text-forest-900 transition-opacity hover:opacity-60"
+              className="link-sweep font-body text-sm text-forest-900"
             >
               {item.label}
             </Link>
           ))}
           <Link
             href="/connect"
-            className="inline-flex items-center gap-2 bg-rust-600 px-6 py-3 font-body text-sm font-semibold text-cream-50 transition-colors hover:bg-rust-500"
+            className="inline-flex items-center bg-rust-600 px-6 py-3 font-body text-sm font-semibold text-cream-50 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-rust-500 hover:shadow-[0_12px_26px_-14px_rgba(168,85,44,0.9)]"
           >
-            Let&apos;s connect <Arrow />
+            Let&apos;s connect
           </Link>
         </nav>
 
@@ -70,14 +88,14 @@ export default function SiteHeader() {
       </div>
 
       {open ? (
-        <div className="border-t border-ink-900/10 bg-cream-100 lg:hidden">
+        <div className="panel-swap border-t border-ink-900/10 bg-cream-100 lg:hidden">
           <nav className="shell flex flex-col py-4">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-ink-900/10 py-4 font-display text-xl text-forest-900"
+                className="border-b border-ink-900/10 py-4 font-display text-xl text-forest-900 transition-[padding] duration-300 hover:pl-2"
               >
                 {item.label}
               </Link>
@@ -85,9 +103,9 @@ export default function SiteHeader() {
             <Link
               href="/connect"
               onClick={() => setOpen(false)}
-              className="mt-6 inline-flex items-center justify-center gap-2 bg-rust-600 px-6 py-4 font-body text-sm font-semibold text-cream-50"
+              className="mt-6 inline-flex items-center justify-center bg-rust-600 px-6 py-4 font-body text-sm font-semibold text-cream-50 transition-colors hover:bg-rust-500"
             >
-              Let&apos;s connect <Arrow />
+              Let&apos;s connect
             </Link>
           </nav>
         </div>

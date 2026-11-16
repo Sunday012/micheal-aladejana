@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { inquiryTopics, site } from "@/lib/site";
-import { Arrow, SectionLabel } from "./ui";
+import Reveal from "./reveal";
+import { SectionLabel } from "./ui";
 
 const field =
   "mt-2 w-full border border-forest-900/20 bg-cream-50 px-4 py-3.5 font-body text-base text-forest-900 outline-none transition focus:border-forest-900 focus:ring-1 focus:ring-forest-900/20";
@@ -32,17 +33,19 @@ export default function Contact({ defaultTopic = "" }: { defaultTopic?: string }
     <section id="connect" className="bg-cream-100 py-24 md:py-32">
       <div className="shell">
         <div className="mx-auto max-w-2xl">
-          <SectionLabel>Get in touch</SectionLabel>
+          <Reveal>
+            <SectionLabel>Get in touch</SectionLabel>
 
-          <h2 className="display mt-6 text-4xl text-forest-900 sm:text-5xl">
-            Take your next step.
-          </h2>
-          <p className="mt-5 text-lg leading-[1.9] text-ink-600">
-            Reach out about coaching, a speaking invitation, the tour, or
-            another inquiry.
-          </p>
+            <h2 className="display mt-6 text-4xl text-forest-900 sm:text-5xl">
+              Take your next step.
+            </h2>
+            <p className="mt-5 text-lg leading-[1.9] text-ink-600">
+              Reach out about coaching, a speaking invitation, the tour, or
+              another inquiry.
+            </p>
+          </Reveal>
 
-          <form onSubmit={handleSubmit} className="mt-12 space-y-7">
+          <Reveal delay={140} as="form" onSubmit={handleSubmit} className="mt-12 space-y-7">
             <div>
               <label className={label} htmlFor="topic">
                 I&apos;m reaching out about <span aria-hidden="true">*</span>
@@ -121,9 +124,9 @@ export default function Contact({ defaultTopic = "" }: { defaultTopic?: string }
 
             <button
               type="submit"
-              className="inline-flex items-center gap-3 bg-rust-600 px-8 py-4 font-body text-sm font-semibold text-cream-50 transition-colors hover:bg-rust-500"
+              className="inline-flex items-center bg-rust-600 px-8 py-4 font-body text-sm font-semibold text-cream-50 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-rust-500 hover:shadow-[0_14px_30px_-14px_rgba(168,85,44,0.85)]"
             >
-              Send my inquiry <Arrow />
+              Send my inquiry
             </button>
 
             {sent ? (
@@ -139,7 +142,7 @@ export default function Contact({ defaultTopic = "" }: { defaultTopic?: string }
                 .
               </p>
             ) : null}
-          </form>
+          </Reveal>
         </div>
       </div>
     </section>

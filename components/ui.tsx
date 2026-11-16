@@ -1,46 +1,29 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
-export function Arrow({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 12 12"
-      aria-hidden="true"
-      className={`inline-block h-[0.7em] w-[0.7em] ${className}`}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.4"
-    >
-      <path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8" />
-    </svg>
-  );
-}
-
 type ButtonProps = ComponentProps<typeof Link> & {
   variant?: "solid" | "outline" | "ghost";
-  arrow?: boolean;
   children: ReactNode;
 };
 
 export function Button({
   variant = "solid",
-  arrow = false,
   children,
   className = "",
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold transition-colors duration-200";
+    "group/btn relative inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold transition-[transform,background-color,color,box-shadow] duration-300 ease-out will-change-transform";
   const variants = {
-    solid: "bg-rust-600 text-cream-50 hover:bg-rust-500",
+    solid:
+      "bg-rust-600 text-cream-50 hover:bg-rust-500 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-12px_rgba(168,85,44,0.85)] active:translate-y-0",
     outline:
-      "border border-current text-current hover:bg-current/10",
-    ghost: "text-current underline underline-offset-[6px] decoration-1 hover:decoration-2 px-0 py-0",
+      "border border-current text-current hover:bg-current/10 hover:-translate-y-0.5 active:translate-y-0",
+    ghost: "link-sweep px-0 py-0 text-current",
   };
   return (
     <Link className={`${base} ${variants[variant]} ${className}`} {...props}>
       {children}
-      {arrow ? <Arrow /> : null}
     </Link>
   );
 }
@@ -70,7 +53,7 @@ export function Monogram({ tone = "dark" }: { tone?: "dark" | "light" }) {
       : "border-cream-100/60 text-cream-100";
   return (
     <span
-      className={`flex h-11 w-11 shrink-0 items-center justify-center border ${box} font-display text-2xl leading-none`}
+      className={`flex h-11 w-11 shrink-0 items-center justify-center border ${box} font-display text-2xl leading-none transition-transform duration-500 ease-out group-hover/logo:rotate-[-4deg] group-hover/logo:scale-105`}
       aria-hidden="true"
     >
       M

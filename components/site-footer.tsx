@@ -14,7 +14,7 @@ export default function SiteFooter() {
     <footer className="bg-forest-950 py-14 text-cream-100">
       <div className="shell">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="group/logo flex items-center gap-3">
             <Monogram tone="light" />
             <span className="leading-tight">
               <span className="block font-body text-[0.78rem] font-bold uppercase tracking-[0.13em]">
@@ -31,7 +31,7 @@ export default function SiteFooter() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="font-body text-sm text-cream-100/85 transition-opacity hover:opacity-60"
+                className="link-sweep font-body text-sm text-cream-100/85"
               >
                 {item.label}
               </Link>
