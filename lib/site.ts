@@ -1,6 +1,11 @@
 export const site = {
   name: "Michael Aladejana",
   tagline: "Ministries",
+  /** Logo lockup: serif name over a letterspaced role line */
+  wordmark: {
+    name: "Dr. Michael Aladejana",
+    roles: ["Pastor", "Teacher", "Author", "Speaker"],
+  },
   email: "hello@michaelaladejana.com",
   youtube: "https://youtube.com/@michaelaladejana",
   instagram: "https://instagram.com/michaelaladejana",

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { Monogram } from "./ui";
+import { Wordmark } from "./ui";
 
 const footerNav = [
   { label: "Discipleship", href: "/#discipleship" },
@@ -14,16 +14,8 @@ export default function SiteFooter() {
     <footer className="bg-forest-950 py-14 text-cream-100">
       <div className="shell">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <Link href="/" className="group/logo flex items-center gap-3">
-            <Monogram tone="light" />
-            <span className="leading-tight">
-              <span className="block font-body text-[0.78rem] font-bold uppercase tracking-[0.13em]">
-                {site.name}
-              </span>
-              <span className="block font-body text-[0.6rem] font-medium uppercase tracking-[0.3em] text-cream-100/60">
-                {site.tagline}
-              </span>
-            </span>
+          <Link href="/" className="group/logo flex items-center">
+            <Wordmark tone="light" />
           </Link>
 
           <nav className="flex flex-wrap gap-x-8 gap-y-3">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { site } from "@/lib/site";
 import type { ComponentProps, ReactNode } from "react";
 
 type ButtonProps = ComponentProps<typeof Link> & {
@@ -46,17 +47,22 @@ export function SectionLabel({
   );
 }
 
-export function Monogram({ tone = "dark" }: { tone?: "dark" | "light" }) {
-  const box =
-    tone === "dark"
-      ? "border-forest-900 text-forest-900"
-      : "border-cream-100/60 text-cream-100";
+export function Wordmark({ tone = "dark" }: { tone?: "dark" | "light" }) {
+  const nameColor = tone === "dark" ? "text-forest-900" : "text-cream-100";
+  const roleColor = tone === "dark" ? "text-rust-600" : "text-peach-200";
+
   return (
-    <span
-      className={`flex h-11 w-11 shrink-0 items-center justify-center border ${box} font-display text-2xl leading-none transition-transform duration-500 ease-out group-hover/logo:rotate-[-4deg] group-hover/logo:scale-105`}
-      aria-hidden="true"
-    >
-      M
+    <span className="block leading-tight">
+      <span
+        className={`block font-display text-[1.35rem] tracking-[-0.01em] transition-opacity duration-300 group-hover/logo:opacity-80 sm:text-[1.5rem] ${nameColor}`}
+      >
+        {site.wordmark.name}
+      </span>
+      <span
+        className={`mt-1 block font-body text-[0.58rem] font-semibold uppercase tracking-[0.28em] sm:text-[0.62rem] ${roleColor}`}
+      >
+        {site.wordmark.roles.join(" · ")}
+      </span>
     </span>
   );
 }

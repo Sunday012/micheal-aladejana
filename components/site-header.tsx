@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { nav, site } from "@/lib/site";
-import { Monogram } from "./ui";
+import { nav } from "@/lib/site";
+import { Wordmark } from "./ui";
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -33,23 +33,15 @@ export default function SiteHeader() {
     >
       <div
         className={`shell flex items-center justify-between gap-6 transition-[height] duration-500 ease-out ${
-          scrolled ? "h-16" : "h-20"
+          scrolled ? "h-[4.75rem]" : "h-24"
         }`}
       >
         <Link
           href="/"
-          className="group/logo flex items-center gap-3"
+          className="group/logo flex items-center"
           onClick={() => setOpen(false)}
         >
-          <Monogram />
-          <span className="leading-tight">
-            <span className="block font-body text-[0.78rem] font-bold uppercase tracking-[0.13em] text-forest-900">
-              {site.name}
-            </span>
-            <span className="block font-body text-[0.6rem] font-medium uppercase tracking-[0.3em] text-ink-600">
-              {site.tagline}
-            </span>
-          </span>
+          <Wordmark />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
