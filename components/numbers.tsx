@@ -12,8 +12,8 @@ export default function Numbers() {
       <Wave position="bottom" fill="fill-cream-100" />
 
       <div
-        className="drift pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-screen"
-        style={{ backgroundImage: "url(/images/pattern.png)", backgroundSize: "480px" }}
+        className="drift pointer-events-none absolute inset-0 opacity-[0.07]"
+        style={{ backgroundImage: "url(/logo/ma-pattern.svg)", backgroundSize: "260px" }}
         aria-hidden="true"
       />
 
