@@ -1,3 +1,4 @@
+import { site } from "@/lib/site";
 import HeroBackdrop from "./hero-backdrop";
 import { Button } from "./ui";
 
@@ -23,7 +24,7 @@ export default function Hero() {
         </p>
 
         <div className="enter enter-5 mt-10 flex flex-col items-center gap-5 sm:flex-row">
-          <Button href="/connect?topic=Discipleship">
+          <Button href={site.discipleshipForm} target="_blank" rel="noreferrer">
             Register for Discipleship
           </Button>
           <Button href="/#teachings" variant="ghost" className="font-semibold">

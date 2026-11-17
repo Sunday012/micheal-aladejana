@@ -1,4 +1,4 @@
-import { discipleshipPillars } from "@/lib/site";
+import { discipleshipPillars, site } from "@/lib/site";
 import Reveal from "./reveal";
 import { Button, SectionLabel } from "./ui";
 
@@ -24,7 +24,12 @@ export default function Discipleship() {
               Grow in Christ through Scripture, prayer, and community. An
               intentional journey of faith, lived together.
             </p>
-            <Button href="/connect?topic=Discipleship" className="mt-9">
+            <Button
+              href={site.discipleshipForm}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-9"
+            >
               Register for Discipleship
             </Button>
           </Reveal>

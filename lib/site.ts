@@ -6,7 +6,9 @@ export const site = {
     name: "Dr. Michael Aladejana",
     roles: ["Pastor", "Teacher", "Author", "Speaker"],
   },
-  email: "hello@michaelaladejana.com",
+  email: "Mamministries@outlook.com",
+  /** Jotform registration for the discipleship programme */
+  discipleshipForm: "https://form.jotform.com/263196430906056",
   youtube: "https://youtube.com/@michaelaladejana",
   instagram: "https://instagram.com/michaelaladejana",
 };
