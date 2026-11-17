@@ -1,8 +1,10 @@
+import HeroBackdrop from "./hero-backdrop";
 import { Button } from "./ui";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-forest-900 text-cream-100">
+    <section className="relative isolate overflow-hidden bg-forest-900 text-cream-100">
+      <HeroBackdrop />
       <div className="shell relative flex min-h-[78vh] flex-col items-center justify-center py-28 text-center md:py-36">
         <p className="eyebrow enter enter-1 text-cream-100/70">
           Michael Aladejana Ministries
