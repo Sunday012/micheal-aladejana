@@ -47,22 +47,21 @@ export function SectionLabel({
   );
 }
 
-export function Wordmark({ tone = "dark" }: { tone?: "dark" | "light" }) {
-  const nameColor = tone === "dark" ? "text-forest-900" : "text-cream-100";
-  const roleColor = tone === "dark" ? "text-rust-600" : "text-peach-200";
-
+export function Logo({
+  tone = "dark",
+  className = "h-9 w-auto sm:h-10",
+}: {
+  tone?: "dark" | "light";
+  className?: string;
+}) {
   return (
-    <span className="block leading-tight">
-      <span
-        className={`block font-display text-[1.02rem] font-bold uppercase tracking-[0.02em] transition-opacity duration-300 group-hover/logo:opacity-80 sm:text-[1.12rem] ${nameColor}`}
-      >
-        {site.wordmark.name}
-      </span>
-      <span
-        className={`mt-1 block font-body text-[0.58rem] font-semibold uppercase tracking-[0.28em] sm:text-[0.62rem] ${roleColor}`}
-      >
-        {site.wordmark.roles.join(" · ")}
-      </span>
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element -- brand SVG, no optimisation needed
+    <img
+      src={tone === "dark" ? "/logo/ma-full.svg" : "/logo/ma-full-white.svg"}
+      alt={site.name}
+      width={662}
+      height={163}
+      className={`${className} transition-opacity duration-300 group-hover/logo:opacity-70`}
+    />
   );
 }

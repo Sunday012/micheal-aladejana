@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { nav } from "@/lib/site";
-import { Wordmark } from "./ui";
+import { Logo } from "./ui";
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -33,7 +33,7 @@ export default function SiteHeader() {
     >
       <div
         className={`shell flex items-center justify-between gap-6 transition-[height] duration-500 ease-out ${
-          scrolled ? "h-[4.75rem]" : "h-24"
+          scrolled ? "h-[4.5rem]" : "h-[5.5rem]"
         }`}
       >
         <Link
@@ -41,7 +41,7 @@ export default function SiteHeader() {
           className="group/logo flex items-center"
           onClick={() => setOpen(false)}
         >
-          <Wordmark />
+          <Logo />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">

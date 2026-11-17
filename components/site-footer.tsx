@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 import Wave from "./wave";
-import { Wordmark } from "./ui";
+import { Logo } from "./ui";
 
 const footerNav = [
   { label: "Discipleship", href: "/#discipleship" },
@@ -17,7 +17,12 @@ export default function SiteFooter() {
       <div className="shell">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <Link href="/" className="group/logo flex items-center">
-            <Wordmark tone="light" />
+            <span className="block">
+              <Logo tone="light" className="h-10 w-auto" />
+              <span className="mt-3 block font-body text-[0.58rem] font-semibold uppercase tracking-[0.28em] text-peach-200">
+                {site.wordmark.roles.join(" · ")}
+              </span>
+            </span>
           </Link>
 
           <nav className="flex flex-wrap gap-x-8 gap-y-3">
