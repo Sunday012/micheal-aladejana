@@ -3,6 +3,7 @@ import Coaching from "@/components/coaching";
 import Contact from "@/components/contact";
 import Discipleship from "@/components/discipleship";
 import Hero from "@/components/hero";
+import Numbers from "@/components/numbers";
 import Resources from "@/components/resources";
 import Teachings from "@/components/teachings";
 import Welcome from "@/components/welcome";
@@ -15,6 +16,7 @@ export default function Home() {
       <Welcome />
       <Discipleship />
       <Teachings />
+      <Numbers />
       <About />
       <Tour />
       <Resources />

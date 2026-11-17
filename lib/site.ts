@@ -48,6 +48,20 @@ export const discipleshipPillars = [
   },
 ];
 
+/** The wave-edged stats band */
+export const numbers = {
+  kicker: "By the numbers",
+  heading: "A life measured in people.",
+  stats: [
+    { value: "15+", label: "Years in ministry" },
+    { value: "3", label: "Continents reached" },
+    { value: "40+", label: "Cities & gatherings" },
+    { value: "1", label: "Unwavering mission" },
+  ],
+  quote:
+    "The work is not the platform. The work is the person in front of you.",
+};
+
 export const teachings = [
   {
     series: "Identity & Purpose",

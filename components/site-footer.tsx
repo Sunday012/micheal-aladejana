@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
+import Wave from "./wave";
 import { Wordmark } from "./ui";
 
 const footerNav = [
@@ -11,7 +12,8 @@ const footerNav = [
 
 export default function SiteFooter() {
   return (
-    <footer className="bg-forest-950 py-14 text-cream-100">
+    <footer className="relative isolate overflow-hidden bg-forest-950 pb-14 pt-28 text-cream-100 sm:pt-32">
+      <Wave position="top" fill="fill-cream-100" />
       <div className="shell">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <Link href="/" className="group/logo flex items-center">
