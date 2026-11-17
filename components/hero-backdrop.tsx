@@ -7,7 +7,15 @@ import { useEffect, useState } from "react";
  * Hero backdrop cycle: the flat green, then a portrait under a dark overlay,
  * then green again, then the next portrait. `null` is a green beat.
  */
-const slides: ({ src: string; alt: string; position: string } | null)[] = [
+type Slide = {
+  src: string;
+  alt: string;
+  position: string;
+  /** "light" photos get a heavier scrim so the cream type still reads */
+  tone?: "dark" | "light";
+};
+
+const slides: (Slide | null)[] = [
   null,
   {
     src: "/images/connect-leader.jpg",
@@ -31,6 +39,14 @@ const slides: ({ src: string; alt: string; position: string } | null)[] = [
     src: "/images/pastor.jpg",
     alt: "Dr. Michael Aladejana",
     position: "object-[center_22%]",
+    tone: "light",
+  },
+  null,
+  {
+    src: "/images/couple.jpg",
+    alt: "Dr. Michael and Christabel Aladejana",
+    position: "object-[center_18%]",
+    tone: "light",
   },
 ];
 
@@ -54,6 +70,7 @@ export default function HeroBackdrop() {
       {slides.map((slide, i) => {
         if (!slide) return null;
         const active = i === index;
+        const light = slide.tone === "light";
         return (
           <div
             key={slide.src}
@@ -67,7 +84,7 @@ export default function HeroBackdrop() {
               fill
               priority={i === 1}
               sizes="100vw"
-              className={`object-cover brightness-[1.12] ${slide.position} transition-transform duration-[9000ms] ease-out ${
+              className={`object-cover ${light ? "brightness-90" : "brightness-[1.12]"} ${slide.position} transition-transform duration-[9000ms] ease-out ${
                 active ? "scale-110" : "scale-100"
               }`}
             />
@@ -75,8 +92,9 @@ export default function HeroBackdrop() {
             <div
               className="absolute inset-0"
               style={{
-                background:
-                  "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(12,41,34,0.74) 0%, rgba(12,41,34,0.52) 45%, rgba(12,41,34,0.28) 100%)",
+                background: light
+                  ? "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(12,41,34,0.84) 0%, rgba(12,41,34,0.66) 45%, rgba(12,41,34,0.42) 100%)"
+                  : "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(12,41,34,0.74) 0%, rgba(12,41,34,0.52) 45%, rgba(12,41,34,0.28) 100%)",
               }}
             />
             {/* slim vignette so the header and lower edge stay readable */}
