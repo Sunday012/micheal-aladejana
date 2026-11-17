@@ -54,28 +54,6 @@ export const numbers = {
     "The work is not the platform. The work is the person in front of you.",
 };
 
-export const teachings = [
-  {
-    series: "Identity & Purpose",
-    title: "You Are Not Behind — You Are Early",
-    meta: "Sunday Service · 2025",
-  },
-  {
-    series: "Prayer & Alignment",
-    title: "Rethinking P.U.S.H. — Prayer as Alignment, Not Petition",
-    meta: "Corporate Prayer Gathering · 2024",
-  },
-  {
-    series: "Foundations",
-    title: "The Problem with Potential",
-    meta: "Discipleship Cohort · 2025",
-  },
-  {
-    series: "Character & Leadership",
-    title: "The Interior Life — What Nobody Sees Becomes Everything",
-    meta: "Leadership Gathering · 2024",
-  },
-];
 
 export const tourCities = [
   { city: "Austin", date: "Details forthcoming" },
