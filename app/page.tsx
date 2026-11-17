@@ -6,14 +6,12 @@ import Hero from "@/components/hero";
 import Numbers from "@/components/numbers";
 import Resources from "@/components/resources";
 import Teachings from "@/components/teachings";
-import Welcome from "@/components/welcome";
 import Tour from "@/components/tour";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Welcome />
       <Discipleship />
       <Teachings />
       <Numbers />

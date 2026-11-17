@@ -207,16 +207,3 @@ body {
   transform: scaleX(1) !important;
 }
 }
-
-/* ------------------------------------------- droplet / lozenge photo masks */
-
-.mask-pill {
-  border-radius: 9999px;
-}
-
-/* teardrop: square element, three round corners + one sharp — rotate 45deg
-   and the sharp corner points straight down */
-.mask-drop {
-  border-radius: 50% 50% 0 50%;
-}
-
