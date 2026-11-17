@@ -8,14 +8,14 @@ export default function Hero() {
           Michael Aladejana Ministries
         </p>
 
-        <h1 className="display mt-8 text-[2.1rem] sm:text-5xl lg:text-[3.8rem]">
+        <h1 className="display mt-8 text-balance text-[clamp(1.4rem,7.4vw,1.75rem)] sm:text-[2.6rem] md:text-5xl lg:text-[3.8rem]">
           <span className="enter enter-2 block">The Word for your life.</span>
           <span className="enter enter-3 mt-2 block italic text-peach-200">
             A life for His purpose.
           </span>
         </h1>
 
-        <p className="enter enter-4 mt-8 max-w-2xl text-base leading-[1.9] text-cream-100/75 md:text-lg">
+        <p className="enter enter-4 mt-8 max-w-2xl text-pretty text-[0.95rem] leading-[1.9] text-cream-100/75 sm:text-base md:text-lg">
           Know Christ. Grow in His Word. Live out your calling through biblical
           teaching, intentional discipleship, and a community of faith.
         </p>
