@@ -11,6 +11,16 @@ export const site = {
   instagram: "https://instagram.com/michaelaladejana",
 };
 
+/** The "come on in" welcome block */
+export const welcome = {
+  marquee: "Come on in!",
+  heading: ["We're excited", "to meet you", "this Sunday."],
+  times: "Sundays 9:00 AM & 11:00 AM",
+  address: "Houston, Texas",
+  appleMap: "https://maps.apple.com/?q=Houston,+Texas",
+  googleMap: "https://maps.google.com/?q=Houston,+Texas",
+};
+
 export const nav = [
   { label: "Discipleship", href: "/#discipleship" },
   { label: "Teachings", href: "/#teachings" },
