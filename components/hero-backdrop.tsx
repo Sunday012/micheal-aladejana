@@ -16,6 +16,12 @@ const slides: ({ src: string; alt: string; position: string } | null)[] = [
   },
   null,
   {
+    src: "/images/metcon.jpg",
+    alt: "Dr. Michael Aladejana speaking at a conference",
+    position: "object-[center_30%]",
+  },
+  null,
+  {
     src: "/images/leader.jpg",
     alt: "Dr. Michael Aladejana ministering",
     position: "object-[center_18%]",
