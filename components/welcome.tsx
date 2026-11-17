@@ -103,7 +103,7 @@ export default function Welcome() {
 
         {/* two tilted lozenges + a teardrop */}
         <Reveal variant="scale" delay={120}>
-          <div className="relative flex items-start justify-center gap-14 sm:gap-24 lg:justify-end lg:gap-28">
+          <div className="relative flex items-start justify-center gap-3 sm:gap-5 lg:justify-end lg:gap-6">
             <MaskedPhoto
               src="/images/hug.jpg"
               alt="A warm welcome at a gathering"
@@ -112,14 +112,14 @@ export default function Welcome() {
             <MaskedPhoto
               src="/images/hospitable.jpg"
               alt="Members sharing at a gathering"
-              className="h-[260px] w-[100px] -translate-y-4 sm:h-[400px] sm:w-[150px] lg:h-[480px] lg:w-[185px]"
+              className="h-[260px] w-[100px] -translate-y-5 sm:h-[400px] sm:w-[150px] lg:h-[480px] lg:w-[185px]"
             />
             <MaskedPhoto
               src="/images/baby.jpg"
               alt="A family in the service"
               shape="drop"
               tilt={45}
-              className="h-[96px] w-[96px] translate-y-40 sm:h-[150px] sm:w-[150px] sm:translate-y-64 lg:h-[180px] lg:w-[180px] lg:translate-y-72"
+              className="-ml-8 h-[96px] w-[96px] translate-y-36 sm:-ml-10 sm:h-[150px] sm:w-[150px] sm:translate-y-56 lg:-ml-14 lg:h-[180px] lg:w-[180px] lg:translate-y-[16rem]"
             />
           </div>
         </Reveal>
