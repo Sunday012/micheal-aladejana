@@ -31,6 +31,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${montserrat.variable} ${workSans.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          // scroll reveals only hide content when JS can un-hide it
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add('js')`,
+          }}
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <SiteHeader />
         <main className="flex-1">{children}</main>

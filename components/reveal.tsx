@@ -17,8 +17,14 @@ type RevealProps = {
 /**
  * Fades content in as it scrolls into view.
  *
- * Deliberately fails open: if the scroll listener never gets a chance to run,
- * a safety timer reveals everything, so content is never left invisible.
+ * IntersectionObserver drives it, with a scroll/rect fallback for browsers
+ * that lack it. There is deliberately no reveal-everything timer: that hides
+ * the effect entirely, because elements far below the fold get revealed
+ * before you ever scroll to them.
+ *
+ * Fails open without a timer: the hidden state is scoped to `.js [data-reveal]`
+ * and the `js` class is set by the inline script in the layout, so with
+ * JavaScript off nothing is hidden in the first place.
  */
 export default function Reveal({
   children,
@@ -40,42 +46,44 @@ export default function Reveal({
       return;
     }
 
+    const hasObserver = typeof IntersectionObserver !== "undefined";
+
+    if (hasObserver) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setShown(true);
+            observer.disconnect();
+          }
+        },
+        // start a little before the element is fully on screen
+        { threshold: 0.08, rootMargin: "0px 0px -8% 0px" },
+      );
+      observer.observe(node);
+      return () => observer.disconnect();
+    }
+
+    // fallback: rect check on scroll
     let frame = 0;
-    let done = false;
-
-    const reveal = () => {
-      if (done) return;
-      done = true;
-      setShown(true);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      clearTimeout(safety);
-    };
-
     const check = () => {
       frame = 0;
       const rect = node.getBoundingClientRect();
-      const trigger = window.innerHeight * 0.92;
-      if (rect.top < trigger && rect.bottom > 0) reveal();
+      if (rect.top < window.innerHeight * 0.9 && rect.bottom > 0) {
+        setShown(true);
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onScroll);
+      }
     };
-
     const onScroll = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(check);
+      if (!frame) frame = window.requestAnimationFrame(check);
     };
-
-    // Safety net: never leave content hidden if something goes wrong.
-    const safety = window.setTimeout(reveal, 2600);
-
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     check();
-
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       if (frame) cancelAnimationFrame(frame);
-      clearTimeout(safety);
     };
   }, []);
 
