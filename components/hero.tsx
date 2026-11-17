@@ -3,11 +3,6 @@ import { Button } from "./ui";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-forest-900 text-cream-100">
-      <div
-        className="drift pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-screen"
-        style={{ backgroundImage: "url(/images/pattern.png)", backgroundSize: "520px" }}
-        aria-hidden="true"
-      />
       <div className="shell relative flex min-h-[78vh] flex-col items-center justify-center py-28 text-center md:py-36">
         <p className="eyebrow enter enter-1 text-cream-100/70">
           Michael Aladejana Ministries

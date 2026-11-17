@@ -13,7 +13,6 @@ export const site = {
 
 /** The "come on in" welcome block */
 export const welcome = {
-  marquee: "Come on in!",
   heading: ["We're excited", "to meet you", "this Sunday."],
   times: "Sundays 9:00 AM & 11:00 AM",
   address: "Houston, Texas",

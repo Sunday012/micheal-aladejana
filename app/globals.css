@@ -208,63 +208,15 @@ body {
 }
 }
 
-/* ------------------------------------------------------------- marquee */
-
-.marquee {
-  display: flex;
-  overflow: hidden;
-  user-select: none;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 4%,
-    #000 96%,
-    transparent
-  );
-}
-
-.marquee__track {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  gap: 3.5rem;
-  min-width: 100%;
-  padding-right: 3.5rem;
-  animation: marquee 26s linear infinite;
-}
-
-.marquee:hover .marquee__track {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-100%, 0, 0); }
-}
-
-/* Outlined (knockout) type used in the marquee */
-.text-outline {
-  color: transparent;
-  -webkit-text-stroke: 1.5px currentColor;
-  paint-order: stroke fill;
-}
-
 /* ------------------------------------------- droplet / lozenge photo masks */
 
 .mask-pill {
   border-radius: 9999px;
 }
 
+/* teardrop: square element, three round corners + one sharp — rotate 45deg
+   and the sharp corner points straight down */
 .mask-drop {
-  /* teardrop: three round corners, one point */
-  border-radius: 9999px 9999px 9999px 12px;
+  border-radius: 50% 50% 0 50%;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .marquee__track {
-    animation: none !important;
-  }
-  .marquee {
-    mask-image: none;
-  }
-}

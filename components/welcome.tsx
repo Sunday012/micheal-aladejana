@@ -10,33 +10,18 @@ function Pin() {
   );
 }
 
-/** One run of the ticker: solid, outline, solid, outline… */
-function MarqueeRun() {
-  return (
-    <div className="marquee__track" aria-hidden="true">
-      {Array.from({ length: 6 }).map((_, i) => (
-        <span
-          key={i}
-          className={`display shrink-0 whitespace-nowrap text-[2.6rem] uppercase leading-none text-rust-600 sm:text-[3.6rem] lg:text-[4.4rem] ${
-            i % 2 ? "text-outline" : ""
-          }`}
-        >
-          {welcome.marquee}
-        </span>
-      ))}
-    </div>
-  );
-}
-
 /**
  * Photo inside a tilted mask. The mask rotates; the picture counter-rotates
- * and scales up so it stays upright and still fills the shape.
+ * and scales up so faces stay upright and still fill the shape.
+ *
+ * Tilting a tall shape widens its real footprint (height × sin(tilt)), which
+ * is why the row below carries far wider gaps than the boxes suggest.
  */
 function MaskedPhoto({
   src,
   alt,
   shape = "pill",
-  tilt = 20,
+  tilt = 12,
   className = "",
 }: {
   src: string;
@@ -47,20 +32,20 @@ function MaskedPhoto({
 }) {
   return (
     <div
-      className={`group/shape relative overflow-hidden bg-cream-200 ${
+      className={`group/shape relative shrink-0 overflow-hidden bg-cream-200 ${
         shape === "pill" ? "mask-pill" : "mask-drop"
       } ${className}`}
       style={{ transform: `rotate(${tilt}deg)` }}
     >
       <div
-        className="absolute inset-0 transition-transform duration-[1200ms] ease-out group-hover/shape:scale-[1.52]"
-        style={{ transform: `rotate(${-tilt}deg) scale(1.45)` }}
+        className="absolute inset-0 transition-transform duration-[1200ms] ease-out group-hover/shape:scale-[1.58]"
+        style={{ transform: `rotate(${-tilt}deg) scale(1.5)` }}
       >
         <Image
           src={src}
           alt={alt}
           fill
-          sizes="(max-width: 1024px) 50vw, 420px"
+          sizes="(max-width: 1024px) 45vw, 380px"
           className="object-cover"
         />
       </div>
@@ -70,20 +55,13 @@ function MaskedPhoto({
 
 export default function Welcome() {
   return (
-    <section id="visit" className="overflow-hidden bg-cream-50 pb-24 pt-10 md:pb-32">
-      {/* scrolling ticker */}
-      <div className="marquee py-6">
-        <MarqueeRun />
-        <MarqueeRun />
-      </div>
-      <span className="sr-only">{welcome.marquee}</span>
-
-      <div className="shell mt-10 grid items-center gap-16 lg:mt-16 lg:grid-cols-[1fr_1.05fr] lg:gap-10">
+    <section id="visit" className="overflow-hidden bg-cream-50 py-24 md:py-32">
+      <div className="shell grid items-center gap-20 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
         <div>
           <Reveal>
-            <h2 className="display text-[2.4rem] uppercase text-ink-900 sm:text-5xl lg:text-[3.4rem]">
+            <h2 className="display text-[2rem] uppercase text-ink-900 sm:text-[2.7rem] lg:text-[3.05rem]">
               {welcome.heading.map((line) => (
-                <span key={line} className="block">
+                <span key={line} className="block whitespace-nowrap">
                   {line}
                 </span>
               ))}
@@ -123,27 +101,25 @@ export default function Welcome() {
           </Reveal>
         </div>
 
-        {/* droplet collage */}
+        {/* two tilted lozenges + a teardrop */}
         <Reveal variant="scale" delay={120}>
-          <div className="relative flex items-start justify-center gap-4 sm:gap-6 lg:justify-end">
+          <div className="relative flex items-start justify-center gap-14 sm:gap-24 lg:justify-end lg:gap-28">
             <MaskedPhoto
               src="/images/hug.jpg"
               alt="A warm welcome at a gathering"
-              tilt={20}
-              className="h-[300px] w-[120px] translate-y-6 sm:h-[460px] sm:w-[185px] lg:h-[520px] lg:w-[210px]"
+              className="h-[260px] w-[100px] translate-y-6 sm:h-[400px] sm:w-[150px] lg:h-[480px] lg:w-[185px]"
             />
             <MaskedPhoto
               src="/images/hospitable.jpg"
               alt="Members sharing at a gathering"
-              tilt={20}
-              className="h-[300px] w-[120px] -translate-y-4 sm:h-[460px] sm:w-[185px] lg:h-[520px] lg:w-[210px]"
+              className="h-[260px] w-[100px] -translate-y-4 sm:h-[400px] sm:w-[150px] lg:h-[480px] lg:w-[185px]"
             />
             <MaskedPhoto
               src="/images/baby.jpg"
               alt="A family in the service"
               shape="drop"
-              tilt={-25}
-              className="h-[150px] w-[110px] translate-y-32 sm:h-[220px] sm:w-[160px] sm:translate-y-56 lg:h-[250px] lg:w-[180px] lg:translate-y-64"
+              tilt={45}
+              className="h-[96px] w-[96px] translate-y-40 sm:h-[150px] sm:w-[150px] sm:translate-y-64 lg:h-[180px] lg:w-[180px] lg:translate-y-72"
             />
           </div>
         </Reveal>
