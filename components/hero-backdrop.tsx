@@ -67,13 +67,20 @@ export default function HeroBackdrop() {
               fill
               priority={i === 1}
               sizes="100vw"
-              className={`object-cover ${slide.position} transition-transform duration-[9000ms] ease-out ${
+              className={`object-cover brightness-[1.12] ${slide.position} transition-transform duration-[9000ms] ease-out ${
                 active ? "scale-110" : "scale-100"
               }`}
             />
-            {/* keeps the cream type readable over any photo */}
-            <div className="absolute inset-0 bg-forest-950/70" />
-            <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/55 to-forest-950/80" />
+            {/* centred scrim for type legibility — edges stay clear */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(12,41,34,0.74) 0%, rgba(12,41,34,0.52) 45%, rgba(12,41,34,0.28) 100%)",
+              }}
+            />
+            {/* slim vignette so the header and lower edge stay readable */}
+            <div className="absolute inset-0 bg-gradient-to-b from-forest-950/55 via-transparent to-forest-950/60" />
           </div>
         );
       })}
