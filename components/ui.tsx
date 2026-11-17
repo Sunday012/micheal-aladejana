@@ -54,7 +54,7 @@ export function Wordmark({ tone = "dark" }: { tone?: "dark" | "light" }) {
   return (
     <span className="block leading-tight">
       <span
-        className={`block font-display text-[1.35rem] tracking-[-0.01em] transition-opacity duration-300 group-hover/logo:opacity-80 sm:text-[1.5rem] ${nameColor}`}
+        className={`block font-display text-[1.02rem] font-bold uppercase tracking-[0.02em] transition-opacity duration-300 group-hover/logo:opacity-80 sm:text-[1.12rem] ${nameColor}`}
       >
         {site.wordmark.name}
       </span>

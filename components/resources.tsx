@@ -17,7 +17,7 @@ export default function Resources() {
             <p className="eyebrow text-center text-cream-100/70">
               Michael Aladejana
             </p>
-            <p className="display mt-16 text-center text-[2.1rem] leading-tight">
+            <p className="display mt-16 text-center text-[1.6rem] leading-tight">
               Authorized to Pray
             </p>
             <p className="eyebrow mt-16 text-center text-cream-100/60">
@@ -32,7 +32,7 @@ export default function Resources() {
           </Reveal>
 
           <Reveal delay={90}>
-            <h2 className="display mt-6 text-4xl text-forest-900 sm:text-5xl lg:text-[3.6rem]">
+            <h2 className="display mt-6 text-3xl text-forest-900 sm:text-4xl lg:text-[2.9rem]">
               Keep growing
               <br />
               beyond the message.

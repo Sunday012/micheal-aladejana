@@ -13,7 +13,7 @@ export default function Hero() {
           Michael Aladejana Ministries
         </p>
 
-        <h1 className="display mt-8 text-[2.6rem] sm:text-6xl lg:text-[4.6rem]">
+        <h1 className="display mt-8 text-[2.1rem] sm:text-5xl lg:text-[3.8rem]">
           <span className="enter enter-2 block">The Word for your life.</span>
           <span className="enter enter-3 mt-2 block italic text-peach-200">
             A life for His purpose.

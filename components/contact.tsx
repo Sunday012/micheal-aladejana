@@ -36,7 +36,7 @@ export default function Contact({ defaultTopic = "" }: { defaultTopic?: string }
           <Reveal>
             <SectionLabel>Get in touch</SectionLabel>
 
-            <h2 className="display mt-6 text-4xl text-forest-900 sm:text-5xl">
+            <h2 className="display mt-6 text-3xl text-forest-900 sm:text-4xl">
               Take your next step.
             </h2>
             <p className="mt-5 text-lg leading-[1.9] text-ink-600">

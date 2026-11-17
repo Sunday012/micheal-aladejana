@@ -17,7 +17,7 @@
   --color-ink-900: #16211d;
   --color-ink-600: #4b5b55;
 
-  --font-display: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -45,7 +45,7 @@ body {
     @apply mx-auto w-full max-w-[1240px] px-6 md:px-10;
   }
   .display {
-    @apply font-display font-normal leading-[1.05] tracking-[-0.015em];
+    @apply font-display font-bold leading-[1.08] tracking-[-0.035em];
   }
   .rule {
     @apply h-px w-full bg-current opacity-10;

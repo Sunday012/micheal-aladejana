@@ -27,7 +27,7 @@ export default function ConnectPage({ searchParams }: PageProps<"/connect">) {
       <section className="bg-forest-900 py-24 text-center text-cream-100 md:py-28">
         <div className="shell">
           <p className="eyebrow text-peach-200">Get in touch</p>
-          <h1 className="display mt-6 text-4xl sm:text-5xl lg:text-[3.8rem]">
+          <h1 className="display mt-6 text-3xl sm:text-4xl lg:text-[3.1rem]">
             Let&apos;s build
             <span className="block italic text-peach-200">together.</span>
           </h1>

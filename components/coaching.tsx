@@ -19,7 +19,7 @@ export default function Coaching() {
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
           <Reveal delay={80}>
-            <h2 className="display text-4xl text-forest-900 sm:text-5xl lg:text-[3.9rem]">
+            <h2 className="display text-3xl text-forest-900 sm:text-4xl lg:text-[3.1rem]">
               Clarity for
               <br />
               your next chapter.
@@ -81,7 +81,7 @@ export default function Coaching() {
         <Reveal className="mt-16 border-t border-forest-900/15 pt-12">
           <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
             <div>
-              <h3 className="display text-3xl text-forest-900">
+              <h3 className="display text-2xl text-forest-900 sm:text-[1.75rem]">
                 Bring the conversation to your community.
               </h3>
               <p className="mt-4 max-w-xl text-[1.05rem] leading-[1.9] text-ink-600">

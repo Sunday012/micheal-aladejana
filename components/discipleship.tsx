@@ -12,7 +12,7 @@ export default function Discipleship() {
 
         <div className="mt-10 grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
           <Reveal delay={80}>
-            <h2 className="display text-4xl text-forest-900 sm:text-5xl lg:text-[3.9rem]">
+            <h2 className="display text-3xl text-forest-900 sm:text-4xl lg:text-[3.1rem]">
               A deeper walk.
               <br />
               A transformed life.

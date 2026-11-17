@@ -17,7 +17,7 @@ export default function About() {
             />
           </div>
           <div className="relative -mt-20 ml-0 w-[86%] bg-rust-600 px-7 py-6 text-cream-50 transition-transform duration-700 ease-out group-hover:-translate-y-2 sm:w-[70%]">
-            <p className="font-display text-xl leading-snug">
+            <p className="font-display text-lg font-bold leading-snug tracking-[-0.02em]">
               A shared life. A shared calling.
             </p>
             <p className="mt-1 text-sm text-cream-50/85">
@@ -32,7 +32,7 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={90}>
-            <h2 className="display mt-6 text-4xl text-forest-900 sm:text-5xl lg:text-[3.5rem]">
+            <h2 className="display mt-6 text-3xl text-forest-900 sm:text-4xl lg:text-[2.9rem]">
               Perspective for life.
               <br />
               Purpose for what&apos;s next.

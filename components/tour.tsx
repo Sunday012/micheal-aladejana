@@ -15,7 +15,7 @@ export default function Tour() {
 
         <div className="mt-10 grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
           <div>
-            <h2 className="display text-5xl sm:text-6xl lg:text-[5.2rem]">
+            <h2 className="display text-4xl sm:text-5xl lg:text-[4.2rem]">
               <Reveal as="span" delay={60} className="block">
                 Grace
               </Reveal>
@@ -49,7 +49,7 @@ export default function Tour() {
               delay={i * 110}
               className="group border-cream-100/15 px-0 py-8 transition-colors duration-500 hover:bg-cream-100/[0.04] sm:px-7 sm:[&:not(:last-child)]:border-r sm:first:pl-0 lg:py-10"
             >
-              <h3 className="display text-3xl transition-transform duration-500 ease-out group-hover:-translate-y-1">
+              <h3 className="display text-2xl transition-transform duration-500 ease-out group-hover:-translate-y-1">
                 {stop.city}
               </h3>
               <p className="mt-3 text-sm text-cream-100/65">{stop.date}</p>
