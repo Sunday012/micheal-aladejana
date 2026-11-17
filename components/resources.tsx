@@ -7,10 +7,10 @@ export default function Resources() {
       <div className="shell grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
         <Reveal
           variant="scale"
-          className="flex items-center justify-center bg-cream-200 p-10 sm:p-16"
+          className="flex items-center justify-center bg-cream-200 p-6 sm:p-16"
         >
           {/* stand-in for the real cover art — deep red field, gold title */}
-          <div className="float-slow relative w-full max-w-[280px] bg-[#7a1420] px-7 py-10 text-cream-100 shadow-[18px_18px_0_rgba(18,58,51,0.12)]">
+          <div className="float-slow relative w-full max-w-[220px] sm:max-w-[280px] bg-[#7a1420] px-7 py-10 text-cream-100 shadow-[18px_18px_0_rgba(18,58,51,0.12)]">
             <span
               className="absolute inset-y-0 left-0 w-2 bg-[#4e0c14]"
               aria-hidden="true"
