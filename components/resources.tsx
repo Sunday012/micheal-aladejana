@@ -9,19 +9,31 @@ export default function Resources() {
           variant="scale"
           className="flex items-center justify-center bg-cream-200 p-10 sm:p-16"
         >
-          <div className="float-slow relative w-full max-w-[280px] bg-forest-900 px-8 py-12 text-cream-100 shadow-[18px_18px_0_rgba(18,58,51,0.12)]">
+          {/* stand-in for the real cover art — deep red field, gold title */}
+          <div className="float-slow relative w-full max-w-[280px] bg-[#7a1420] px-7 py-10 text-cream-100 shadow-[18px_18px_0_rgba(18,58,51,0.12)]">
             <span
-              className="absolute inset-y-0 left-0 w-1.5 bg-rust-600"
+              className="absolute inset-y-0 left-0 w-2 bg-[#4e0c14]"
               aria-hidden="true"
             />
-            <p className="eyebrow text-center text-cream-100/70">
-              Michael Aladejana
+            <p className="text-center font-body text-[0.56rem] font-semibold uppercase tracking-[0.2em] text-cream-100/85">
+              Dr. Vessel Michael Aladejana
             </p>
-            <p className="display mt-16 text-center text-[1.6rem] leading-tight">
-              Authorized to Pray
+            <span className="mx-auto mt-3 block h-px w-16 bg-[#e0a73c]" aria-hidden="true" />
+
+            <p className="display mt-8 text-center text-[1.5rem] uppercase leading-none">
+              Authorized
             </p>
-            <p className="eyebrow mt-16 text-center text-cream-100/60">
-              Books &amp; Spiritual Growth
+            <p className="my-1 text-center font-body text-[0.6rem] uppercase tracking-[0.3em] text-cream-100/80">
+              to
+            </p>
+            <p className="display text-center text-[2.6rem] uppercase leading-none text-[#e0a73c]">
+              Pray
+            </p>
+
+            <p className="mt-10 text-center font-body text-[0.5rem] uppercase leading-[1.8] tracking-[0.14em] text-cream-100/70">
+              Power to pray · Authority to declare
+              <br />
+              Transformation to live
             </p>
           </div>
         </Reveal>
@@ -41,8 +53,8 @@ export default function Resources() {
 
           <Reveal delay={180}>
             <p className="mt-7 max-w-lg text-[1.05rem] leading-[1.95] text-ink-600">
-              Explore <em>Authorized to Pray</em> by Michael Aladejana, and
-              connect with the ministry about book availability and resources
+              Explore <em>Authorized to Pray</em> — power to pray, authority to
+              declare, transformation to live — and connect with the ministry about book availability and resources
               for your walk with Christ.
             </p>
           </Reveal>
