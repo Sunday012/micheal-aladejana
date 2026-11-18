@@ -39,20 +39,23 @@ Fonts: Playfair Display (display) + Work Sans (body).
 
 ## Inquiry form
 
-`POST /api/inquiry` appends each submission to a Google Sheet — the same
-service-account pattern the previous site (`thecglobal`) uses.
+`POST /api/inquiry` emails each submission to the ministry inbox
+(`INQUIRY_TO`, defaulting to `site.email`). The visitor's address is set as
+`Reply-To`, so replying in the mail client answers them directly.
 
 Set these in `.env.local` locally and in the Vercel project settings:
 
-| Variable | Where it comes from |
+| Variable | Notes |
 | --- | --- |
-| `GOOGLE_SHEETS_CLIENT_EMAIL` | service account address |
-| `GOOGLE_SHEETS_PRIVATE_KEY` | service account key (keep the `\n` escapes) |
-| `GOOGLE_SHEETS_SPREADSHEET_ID` | the sheet's id from its URL |
+| `SMTP_HOST` | e.g. `smtp-mail.outlook.com` |
+| `SMTP_PORT` | `587` (STARTTLS) or `465` (TLS) |
+| `SMTP_USER` | the mailbox that sends |
+| `SMTP_PASS` | **app password**, not the account password |
+| `INQUIRY_TO` | optional override for the recipient |
 
-Share the spreadsheet with the service-account address as an **Editor**, or
-every write returns 403. Until the variables are set the endpoint answers
-503 and the form tells the visitor to email instead.
+Outlook and Gmail both require an app password with 2FA enabled; a plain
+account password will fail authentication. Until the variables are set the
+endpoint answers 503 and the form tells the visitor to email instead.
 
 Discipleship registration stays on Jotform; consultations book through cal.com.
 Both links live in `lib/site.ts`.

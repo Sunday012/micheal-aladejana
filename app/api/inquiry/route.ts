@@ -1,5 +1,6 @@
-import { google } from "googleapis";
+import nodemailer from "nodemailer";
 import { NextRequest, NextResponse } from "next/server";
+import { site } from "@/lib/site";
 
 type Inquiry = {
   firstName: string;
@@ -10,15 +11,13 @@ type Inquiry = {
   message: string;
 };
 
-const HEADERS = [
-  "Date",
-  "First Name",
-  "Last Name",
-  "Email",
-  "Organisation",
-  "Topic",
-  "Message",
-];
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
 
 export async function POST(request: NextRequest) {
   let body: Inquiry;
@@ -48,65 +47,62 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
-  const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY;
-  const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
+  const host = process.env.SMTP_HOST;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  const to = process.env.INQUIRY_TO ?? site.email;
 
-  if (!clientEmail || !privateKey || !spreadsheetId) {
-    console.error("[inquiry] Google Sheets credentials are not configured");
+  if (!host || !user || !pass) {
+    console.error("[inquiry] SMTP credentials are not configured");
     return NextResponse.json(
       { error: "The form is not connected yet. Please email us instead." },
       { status: 503 },
     );
   }
 
+  const name = `${firstName} ${lastName}`;
+  const lines = [
+    ["Name", name],
+    ["Email", email],
+    ["Organisation", organisation || "—"],
+    ["Topic", topic],
+  ];
+
   try {
-    const auth = new google.auth.GoogleAuth({
-      credentials: {
-        client_email: clientEmail,
-        private_key: privateKey.replace(/\\n/g, "\n"),
-      },
-      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+    const transport = nodemailer.createTransport({
+      host,
+      port: Number(process.env.SMTP_PORT ?? 587),
+      secure: Number(process.env.SMTP_PORT ?? 587) === 465,
+      auth: { user, pass },
     });
-    const sheets = google.sheets({ version: "v4", auth });
 
-    // write the header row once, on the first submission
-    const existing = await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range: "Sheet1!A1:G1",
-    });
-    if (!existing.data.values?.length) {
-      await sheets.spreadsheets.values.update({
-        spreadsheetId,
-        range: "Sheet1!A1:G1",
-        valueInputOption: "RAW",
-        requestBody: { values: [HEADERS] },
-      });
-    }
-
-    await sheets.spreadsheets.values.append({
-      spreadsheetId,
-      range: "Sheet1!A:G",
-      valueInputOption: "RAW",
-      insertDataOption: "INSERT_ROWS",
-      requestBody: {
-        values: [
-          [
-            new Date().toISOString(),
-            firstName,
-            lastName,
-            email,
-            organisation,
-            topic,
-            message,
-          ],
-        ],
-      },
+    await transport.sendMail({
+      from: `"${site.name} website" <${user}>`,
+      to,
+      // replying in the mail client answers the visitor directly
+      replyTo: `"${name}" <${email}>`,
+      subject: `Website inquiry — ${topic}`,
+      text: [
+        ...lines.map(([k, v]) => `${k}: ${v}`),
+        "",
+        message,
+      ].join("\n"),
+      html: `
+        <table style="font-family:system-ui,sans-serif;font-size:15px;border-collapse:collapse">
+          ${lines
+            .map(
+              ([k, v]) =>
+                `<tr><td style="padding:4px 16px 4px 0;color:#4b5b55">${k}</td><td style="padding:4px 0"><strong>${escapeHtml(v)}</strong></td></tr>`,
+            )
+            .join("")}
+        </table>
+        <p style="font-family:system-ui,sans-serif;font-size:15px;line-height:1.7;white-space:pre-wrap;margin-top:20px">${escapeHtml(message)}</p>
+      `,
     });
 
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("[inquiry] failed to record submission", error);
+    console.error("[inquiry] failed to send", error);
     return NextResponse.json(
       { error: "Something went wrong sending that. Please try again." },
       { status: 500 },
