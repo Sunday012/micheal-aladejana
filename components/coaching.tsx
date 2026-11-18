@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { coachingTracks } from "@/lib/site";
+import { coachingTracks, site } from "@/lib/site";
 import Reveal from "./reveal";
 import { SectionLabel } from "./ui";
 
@@ -70,10 +70,12 @@ export default function Coaching() {
           </div>
           <div className="lg:justify-self-end">
             <Link
-              href={`/connect?topic=Pastoral%20guidance%20or%20coaching&track=${encodeURIComponent(track.tab)}`}
+              href={site.booking}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center bg-rust-600 px-7 py-3.5 font-body text-sm font-semibold text-cream-50 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-rust-500 hover:shadow-[0_14px_30px_-14px_rgba(168,85,44,0.85)]"
             >
-              Request a conversation
+              Book a consultation
             </Link>
           </div>
         </div>

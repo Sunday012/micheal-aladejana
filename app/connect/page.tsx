@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import Link from "next/link";
 import Contact from "@/components/contact";
-import { inquiryTopics } from "@/lib/site";
+import Reveal from "@/components/reveal";
+import { inquiryTopics, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Let's connect",
@@ -36,6 +38,50 @@ export default function ConnectPage({ searchParams }: PageProps<"/connect">) {
             asking about the book, or requesting a coaching conversation — it
             starts here.
           </p>
+        </div>
+      </section>
+
+      {/* two routes in: write to us, or book time directly */}
+      <section className="bg-forest-950 py-20 text-cream-100">
+        <div className="shell grid gap-6 md:grid-cols-2">
+          <Reveal className="group border border-cream-100/15 p-8 transition-colors duration-500 hover:border-peach-200/50 sm:p-10">
+            <span className="text-2xl text-peach-200" aria-hidden="true">
+              ✦
+            </span>
+            <h2 className="display mt-6 text-2xl">Ministry &amp; Speaking</h2>
+            <p className="mt-4 text-[0.98rem] leading-[1.85] text-cream-100/70">
+              Church services, conferences, retreats, discipleship, books,
+              media &amp; general enquiries
+            </p>
+            <Link
+              href="#connect"
+              className="link-sweep mt-8 font-body text-sm font-semibold uppercase tracking-[0.12em] text-peach-200"
+            >
+              Fill out the form →
+            </Link>
+          </Reveal>
+
+          <Reveal
+            delay={120}
+            className="group border border-cream-100/15 p-8 transition-colors duration-500 hover:border-peach-200/50 sm:p-10"
+          >
+            <span className="text-2xl text-peach-200" aria-hidden="true">
+              ✦
+            </span>
+            <h2 className="display mt-6 text-2xl">Coaching &amp; Consultation</h2>
+            <p className="mt-4 text-[0.98rem] leading-[1.85] text-cream-100/70">
+              Pastoral guidance, premarital and relationship coaching,
+              leadership, life &amp; purpose
+            </p>
+            <a
+              href={site.booking}
+              target="_blank"
+              rel="noreferrer"
+              className="link-sweep mt-8 font-body text-sm font-semibold uppercase tracking-[0.12em] text-peach-200"
+            >
+              Book a consultation →
+            </a>
+          </Reveal>
         </div>
       </section>
 

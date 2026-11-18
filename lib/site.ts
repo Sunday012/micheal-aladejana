@@ -9,8 +9,16 @@ export const site = {
   email: "Mamministries@outlook.com",
   /** Jotform registration for the discipleship programme */
   discipleshipForm: "https://form.jotform.com/263196430906056",
-  youtube: "https://youtube.com/@michaelaladejana",
-  instagram: "https://instagram.com/michaelaladejana",
+  /** cal.com booking page for consultations */
+  booking: "https://cal.com/michael-aladejana-j0rt6p",
+  youtube: "https://youtube.com/@pst.michaelmotcha",
+  instagram: "https://www.instagram.com/pst.michaelmotcha",
+  /** Featured teaching embedded in the Teachings section */
+  featuredVideo: {
+    id: "I_-aJIF0Dmc",
+    title:
+      "The Truth Many Christians Don't Want to Hear About Success",
+  },
 };
 
 export const nav = [

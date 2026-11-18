@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { site } from "@/lib/site";
 import Reveal from "./reveal";
+import VideoEmbed from "./video-embed";
 import { SectionLabel } from "./ui";
 
 export default function Teachings() {
@@ -28,33 +28,13 @@ export default function Teachings() {
         </div>
 
         <Reveal variant="scale" delay={120} className="mt-16 block">
-          <a href={site.youtube} target="_blank" rel="noreferrer" className="group block">
-            <div className="relative aspect-[16/9] w-full overflow-hidden bg-forest-950">
-              <Image
-                src="/images/leader.jpg"
-                alt="Michael Aladejana teaching"
-                fill
-                sizes="(max-width: 1240px) 100vw, 1160px"
-                className="object-cover object-[center_22%] opacity-75 grayscale transition-all duration-[1200ms] ease-out group-hover:scale-105 group-hover:opacity-95 group-hover:grayscale-0"
-                priority
-              />
-              <div className="absolute inset-0 bg-forest-950/40 transition-colors duration-700 group-hover:bg-forest-950/25" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 text-cream-100">
-                <span className="pulse-ring relative flex h-20 w-20 items-center justify-center rounded-full border border-cream-100/70 transition-transform duration-500 ease-out group-hover:scale-110 group-hover:bg-cream-100/15">
-                  <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7" fill="currentColor" aria-hidden="true">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </span>
-                <span className="eyebrow">Play featured teaching</span>
-              </div>
-            </div>
-          </a>
+          <VideoEmbed />
         </Reveal>
 
         <Reveal delay={80} className="mt-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <h3 className="display text-2xl text-forest-900">
-              A moment in the Word
+              {site.featuredVideo.title}
             </h3>
             <p className="mt-2 text-sm text-ink-600">
               Michael Aladejana · Featured video

@@ -36,3 +36,23 @@ Fonts: Playfair Display (display) + Work Sans (body).
 - The inquiry form composes a `mailto:` to `site.email` — swap in a real endpoint (Resend, Formspree, route handler) before launch.
 - Featured video and teaching rows link to the YouTube channel; replace with real video IDs.
 - Images are placeholders pulled from the `thecglobal` project.
+
+## Inquiry form
+
+`POST /api/inquiry` appends each submission to a Google Sheet — the same
+service-account pattern the previous site (`thecglobal`) uses.
+
+Set these in `.env.local` locally and in the Vercel project settings:
+
+| Variable | Where it comes from |
+| --- | --- |
+| `GOOGLE_SHEETS_CLIENT_EMAIL` | service account address |
+| `GOOGLE_SHEETS_PRIVATE_KEY` | service account key (keep the `\n` escapes) |
+| `GOOGLE_SHEETS_SPREADSHEET_ID` | the sheet's id from its URL |
+
+Share the spreadsheet with the service-account address as an **Editor**, or
+every write returns 403. Until the variables are set the endpoint answers
+503 and the form tells the visitor to email instead.
+
+Discipleship registration stays on Jotform; consultations book through cal.com.
+Both links live in `lib/site.ts`.
