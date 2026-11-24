@@ -7,6 +7,7 @@ const footerNav = [
   { label: "Discipleship", href: "/#discipleship" },
   { label: "Teachings", href: "/#teachings" },
   { label: "The Tour", href: "/#tour" },
+  { label: "Partner", href: "/#partner" },
   { label: "Contact", href: "/connect" },
 ];
 

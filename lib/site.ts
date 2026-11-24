@@ -9,6 +9,9 @@ export const site = {
   email: "pm.tecglobal@gmail.com",
   /** Jotform registration for the discipleship programme */
   discipleshipForm: "https://form.jotform.com/263196430906056",
+  /** Tithe.ly giving form */
+  giving:
+    "https://give.tithe.ly/?formId=030ed140-b168-4d91-a818-635037345c77",
   /** cal.com booking page for consultations */
   booking: "https://cal.com/michael-aladejana-j0rt6p",
   youtube: "https://youtube.com/@pst.michaelmotcha",
@@ -28,6 +31,7 @@ export const nav = [
   { label: "The Tour", href: "/#tour" },
   { label: "Resources", href: "/#resources" },
   { label: "Coaching", href: "/#coaching" },
+  { label: "Partner", href: "/#partner" },
 ];
 
 export const discipleshipPillars = [
