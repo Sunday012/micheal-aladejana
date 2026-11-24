@@ -23,16 +23,39 @@ export default function Contact({ defaultTopic = "" }: { defaultTopic?: string }
     setStatus("sending");
     setError("");
 
+    // Web3Forms only accepts browser-side calls on the free plan, so the
+    // request goes straight from here; without a key we post to our own
+    // SMTP-backed route instead.
+    const web3formsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+    const endpoint = web3formsKey
+      ? "https://api.web3forms.com/submit"
+      : "/api/inquiry";
+    const body = web3formsKey
+      ? {
+          access_key: web3formsKey,
+          subject: `Website inquiry — ${data.topic}`,
+          from_name: "Michael Aladejana website",
+          replyto: data.email,
+          Name: `${data.firstName} ${data.lastName}`,
+          Email: data.email,
+          Organisation: data.organisation || "—",
+          Topic: data.topic,
+          Message: data.message,
+        }
+      : data;
+
     try {
-      const res = await fetch("/api/inquiry", {
+      const res = await fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(body),
       });
       const payload = await res.json().catch(() => ({}));
 
-      if (!res.ok) {
-        setError(payload.error ?? "Something went wrong. Please try again.");
+      if (!res.ok || payload.success === false) {
+        setError(
+          payload.error ?? payload.message ?? "Something went wrong. Please try again.",
+        );
         setStatus("error");
         return;
       }
