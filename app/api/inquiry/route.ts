@@ -47,20 +47,59 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  const to = process.env.INQUIRY_TO ?? site.email;
+  const name = `${firstName} ${lastName}`;
+  const web3formsKey = process.env.WEB3FORMS_KEY;
   const host = process.env.SMTP_HOST;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  const to = process.env.INQUIRY_TO ?? site.email;
 
+  // Preferred: Web3Forms — a hosted relay, so no mailbox password lives here.
+  if (web3formsKey) {
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: web3formsKey,
+          subject: `Website inquiry — ${topic}`,
+          from_name: `${site.name} website`,
+          replyto: email,
+          Name: name,
+          Email: email,
+          Organisation: organisation || "—",
+          Topic: topic,
+          Message: message,
+        }),
+      });
+      const payload = await res.json().catch(() => ({}));
+
+      if (!res.ok || payload.success === false) {
+        console.error("[inquiry] web3forms rejected the submission", payload);
+        return NextResponse.json(
+          { error: "Something went wrong sending that. Please try again." },
+          { status: 502 },
+        );
+      }
+      return NextResponse.json({ ok: true });
+    } catch (error) {
+      console.error("[inquiry] web3forms request failed", error);
+      return NextResponse.json(
+        { error: "Could not send that right now. Please try again." },
+        { status: 502 },
+      );
+    }
+  }
+
+  // Fallback: plain SMTP, if an app password has been set up instead.
   if (!host || !user || !pass) {
-    console.error("[inquiry] SMTP credentials are not configured");
+    console.error("[inquiry] no delivery method configured");
     return NextResponse.json(
       { error: "The form is not connected yet. Please email us instead." },
       { status: 503 },
     );
   }
 
-  const name = `${firstName} ${lastName}`;
   const lines = [
     ["Name", name],
     ["Email", email],
