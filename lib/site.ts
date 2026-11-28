@@ -13,7 +13,7 @@ export const site = {
   giving:
     "https://give.tithe.ly/?formId=030ed140-b168-4d91-a818-635037345c77",
   /** cal.com booking page for consultations */
-  booking: "https://cal.com/michael-aladejana-j0rt6p",
+  booking: "http://cal.com/michael-aladejanaministries-bn1cls",
   youtube: "https://youtube.com/@pst.michaelmotcha",
   instagram: "https://www.instagram.com/pst.michaelmotcha",
   /** Featured teaching embedded in the Teachings section */
